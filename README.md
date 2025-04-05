@@ -39,7 +39,7 @@ Run the program for a given number `n` to find all prime numbers up to `n`. For 
 ./sieve_cuda 1000000
 ```
 
-###Performance Analysis
+### Performance Analysis
 
 
 This project also includes performance benchmarks to compare the execution times of each implementation. You can find the results in the results/ directory.
