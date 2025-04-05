@@ -20,12 +20,13 @@ void sieve_openmp(int n) {
     // Parallelization for marking multiples of primes
 #pragma omp parallel
     {
-        // Check for odd numbers only (i.e., skip even numbers)
+        // Parallelize the outer loop for odd numbers only (skip even numbers)
 #pragma omp for
-        for (int i = 3; i <= sqrt(n); i += 2) {  // start from 3, check only odd numbers
+        for (int i = 3; i <= sqrt(n); i += 2) {  // Start from 3, check only odd numbers
             if (primes[i]) {
-                // Mark multiples of i as non-prime (starting from i*i, and skipping even multiples)
-                for (int j = i * i; j <= n; j += 2 * i) { // skip even multiples
+                // Parallelize the inner loop for marking multiples of the prime number
+#pragma omp for
+                for (int j = i * i; j <= n; j += 2 * i) { // Skip even multiples
                     primes[j] = false;
                 }
             }
