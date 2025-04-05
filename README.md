@@ -13,9 +13,12 @@ The goal is to compare the performance of these implementations in terms of exec
 
 
 ### Results
----
+--
 
 ![ChatGPT Image Apr 6, 2025, 12_52_51 AM](https://github.com/user-attachments/assets/aa51ff30-f217-4aed-8532-977ab46250c4)
+
+Tested on : AMD Ryzen 7 5800H @ 3.20 GHz
+Cores / Threads: 8 Cores, 16 Threads
 
 ## How to run
 
