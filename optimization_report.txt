@@ -20,8 +20,12 @@ The next optimization involved parallelizing the inner loop, where we mark multi
 Step 3: Reducing Overhead
 To avoid excessive thread synchronization overhead, the algorithm was optimized to limit the number of threads involved, matching the number of available CPU cores. We used omp_get_num_threads() to adjust the workload dynamically based on the system’s configuration.
 
+4. Optimization - Ignoring Even Numbers
+A key performance optimization was implemented to reduce unnecessary computations:
+We initially processed all numbers. However, after marking 2 as prime, we realized that all other even numbers could be ignored, as they are always divisible by 2 and cannot be prime. This optimization removed half of the numbers from being processed, significantly improving performance.
+The algorithm now only checks odd numbers (after marking 2 as prime), reducing the problem size by about 50%.
 
-4. Benchmarking and Performance Testing
+5. Benchmarking and Performance Testing
 The performance of both the sequential and OpenMP versions was measured and compared. We ran benchmarks for values of n ranging from 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000, and 1000000000.
 
 The execution times were logged for both versions of the algorithm, and the results were saved in a benchmark.txt file for further analysis.
