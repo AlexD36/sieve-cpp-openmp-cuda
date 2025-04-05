@@ -4,6 +4,8 @@
 ![OpenMP](https://img.shields.io/badge/OpenMP-4.5-5e9c40?style=flat-square)
 ![CUDA](https://img.shields.io/badge/CUDA-11.2-76b900?style=flat-square)
 
+![ChatGPT Image Apr 6, 2025, 12_52_51 AM](https://github.com/user-attachments/assets/aa51ff30-f217-4aed-8532-977ab46250c4)
+
 This project implements the **Sieve of Eratosthenes** algorithm using three different approaches:
 - **Sequential** (C++)
 - **OpenMP** (parallelized on CPU)
