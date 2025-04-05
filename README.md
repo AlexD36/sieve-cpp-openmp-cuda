@@ -12,8 +12,7 @@ This project implements the **Sieve of Eratosthenes** algorithm using three diff
 The goal is to compare the performance of these implementations in terms of execution time and scalability across CPU and GPU architectures.
 
 
-### Results
---
+# Results
 
 ![ChatGPT Image Apr 6, 2025, 12_52_51 AM](https://github.com/user-attachments/assets/aa51ff30-f217-4aed-8532-977ab46250c4)
 
