@@ -1,6 +1,5 @@
 # Sieve of Eratosthenes: Sequential vs OpenMP vs CUDA
 
-![Build Status](https://img.shields.io/github/workflow/status/username/repository/CI?style=flat-square)
 ![C++](https://img.shields.io/badge/C%2B%2B-11-blue?style=flat-square)
 ![OpenMP](https://img.shields.io/badge/OpenMP-4.5-green?style=flat-square)
 ![CUDA](https://img.shields.io/badge/CUDA-11.2-orange?style=flat-square)
