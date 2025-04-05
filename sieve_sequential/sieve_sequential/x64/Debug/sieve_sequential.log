@@ -1,0 +1,3 @@
+﻿  sieve_sequential.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\filesystem(12): warning STL4038: The contents of <filesystem> are available only with C++17 or later.
+  sieve_sequential.vcxproj -> C:\Users\Alex\Documents\GitHub\sieve-cpp-openmp-cuda\sieve_sequential\x64\Debug\sieve_sequential.exe
