@@ -1,9 +1,9 @@
 # Sieve of Eratosthenes: Sequential vs OpenMP vs CUDA
 
 ![C++](https://img.shields.io/badge/C%2B%2B-11-blue?style=flat-square)
-![OpenMP](https://img.shields.io/badge/OpenMP-4.5-green?style=flat-square)
-![CUDA](https://img.shields.io/badge/CUDA-11.2-orange?style=flat-square)
-![Parallelization](https://img.shields.io/badge/Parallelization-CPU%20%26%20GPU-blue?style=flat-square)
+![OpenMP](https://img.shields.io/badge/OpenMP-4.5-5e9c40?style=flat-square)
+![CUDA](https://img.shields.io/badge/CUDA-11.2-76b900?style=flat-square)
+![Parallelization](https://img.shields.io/badge/Parallelization-CPU%20%26%20GPU-0078d4?style=flat-square)
 
 This project implements the **Sieve of Eratosthenes** algorithm using three different approaches:
 - **Sequential** (C++)
