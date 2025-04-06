@@ -54,4 +54,4 @@ Run the program for a given number `n` to find all prime numbers up to `n`. For 
 ### Performance Analysis
 
 
-This project also includes performance benchmarks to compare the execution times of each implementation. You can find the results in the results/benchmark.txt directory or in benchmark_final.txt.
+This project also includes performance benchmarks to compare the execution times of each implementation. You can find the results in the `results/benchmark.txt` directory or in `benchmark_final.txt`.
