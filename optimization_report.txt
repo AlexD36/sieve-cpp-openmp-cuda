@@ -1,31 +1,60 @@
-Steps Taken to Parallelize the Algorithm
-
+Optimization Report: Parallelizing the Sieve of Eratosthenes Algorithm with OpenMP
 1. Sequential Implementation
-Initially, the algorithm was implemented sequentially. It works by marking all multiples of each prime number as non-prime. The Sieve of Eratosthenes algorithm iterates from 2 to sqrt(n) and marks the multiples of each prime number.
-The sequential version runs in O(n log log n) time complexity, where n is the upper limit for finding prime numbers. This version processes each number one by one, which results in relatively slow execution for large values of n.
+The initial version of the Sieve of Eratosthenes was implemented sequentially. It identifies all prime numbers up to a given limit n by iteratively marking the multiples of each prime number as non-prime. The core idea is to iterate from 2 to √n, and for each number that is still marked as prime, mark all its multiples as composite (non-prime).
+This approach has a time complexity of O(n log log n) and performs adequately for small inputs. However, as n grows larger (e.g., up to 10⁸ or 10⁹), the sequential nature of the algorithm becomes a bottleneck due to its inherently iterative design.
 
-2. Identifying Opportunities for Parallelization
-The algorithm has two key steps that are inherently parallelizable:
-Marking multiples of each prime as non-prime: The marking of multiples can be done independently for each prime, meaning that different numbers can be marked in parallel.
-Iterating through numbers: Each prime number can be processed independently (i.e., each iteration to mark multiples does not depend on other iterations).
-These observations made it clear that parallelizing the marking step would be beneficial, especially for large values of n.
+2. Identifying Parallelization Opportunities
+The Sieve of Eratosthenes exposes two important opportunities for parallelism:
+Marking Multiples: The task of marking the multiples of a prime number can be done independently. This marking operation for different primes does not interfere with each other.
+Processing Prime Candidates: The outer loop (iterating through potential primes) is independent across iterations. There are no data dependencies between the operations for different values of i (as long as proper care is taken when marking in the shared array).
+This independence makes the sieve a good candidate for shared-memory parallelization using OpenMP.
 
-3. Parallelizing with OpenMP
+3. Parallelization Strategy Using OpenMP
 Step 1: Parallelizing the Outer Loop
-The outer loop iterates over numbers from 2 to sqrt(n). We applied OpenMP's #pragma omp parallel for directive to this loop. This allowed each prime number check to run on different threads, which speeds up the overall process.
+The outer loop that runs from 2 to √n was parallelized using #pragma omp parallel for. Since each iteration checks whether i is prime and then marks its multiples, and since each i is independent of others, this loop can be safely executed in parallel.
 
-Step 2: Parallelizing the Inner Loop (Marking Multiples)
-The next optimization involved parallelizing the inner loop, where we mark multiples of each prime as non-prime. Each thread was assigned a range of numbers to mark as non-prime, reducing the workload on each thread and allowing the algorithm to run faster.
+#pragma omp parallel for schedule(dynamic)
+for (int i = 2; i <= sqrt(n); ++i) {
+    if (primes[i]) {
+        for (int j = i * i; j <= n; j += i) {
+            primes[j] = false;
+        }
+    }
+}
+We chose schedule(dynamic) to better balance the workload between threads, especially since the number of iterations in the inner loop decreases as i increases.
 
-Step 3: Reducing Overhead
-To avoid excessive thread synchronization overhead, the algorithm was optimized to limit the number of threads involved, matching the number of available CPU cores. We used omp_get_num_threads() to adjust the workload dynamically based on the system’s configuration.
+Step 2: Avoiding Parallelization of the Inner Loop
+Although initially considered, parallelizing the inner loop (which marks multiples of a prime) was ultimately avoided. Doing so introduces:
+High overhead from nested parallelism.
+Potential race conditions when multiple threads try to mark the same position in the primes array.
+Unnecessary synchronization costs.
+Hence, only the outer loop is parallelized, and each thread is responsible for marking multiples of its assigned prime number sequentially.
 
-4. Optimization - Ignoring Even Numbers
-A key performance optimization was implemented to reduce unnecessary computations:
-We initially processed all numbers. However, after marking 2 as prime, we realized that all other even numbers could be ignored, as they are always divisible by 2 and cannot be prime. This optimization removed half of the numbers from being processed, significantly improving performance.
-The algorithm now only checks odd numbers (after marking 2 as prime), reducing the problem size by about 50%.
+4. Optimization – Skipping Even Numbers
+To further optimize performance, we implemented an important domain-specific optimization:
+After handling the number 2, all even numbers are skipped, as they cannot be prime.
+The sieve now only processes odd numbers starting from 3.
+This reduces memory usage and computation time by nearly 50%, especially beneficial for large values of n.
+
+Example:
+
+for (int i = 3; i <= sqrt(n); i += 2) {
+    if (primes[i]) {
+        for (int j = i * i; j <= n; j += 2 * i) {
+            primes[j] = false;
+        }
+    }
+}
+
+This change, combined with OpenMP, significantly enhances performance while preserving correctness.
 
 5. Benchmarking and Performance Testing
-The performance of both the sequential and OpenMP versions was measured and compared. We ran benchmarks for values of n ranging from 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000, and 1000000000.
+To evaluate the performance gains of the parallel implementation, we conducted a series of benchmarks using increasing values of n:
 
-The execution times were logged for both versions of the algorithm, and the results were saved in a benchmark.txt file for further analysis.
+n = 10, 100, 1,000, 10,000, ..., up to 1,000,000,000 (10^9)
+
+For each value of n, we measured:
+Execution time of the sequential version.
+Execution time of the OpenMP-parallelized version.
+
+All tests were conducted on a 16-core system, using omp_set_num_threads(16) to fully utilize the available CPU cores. Execution times were logged and saved in benchmark.txt for post-analysis.
