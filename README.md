@@ -2,7 +2,7 @@
 
 ![C++](https://img.shields.io/badge/C%2B%2B-17-blue?style=flat-square)
 ![OpenMP](https://img.shields.io/badge/OpenMP-4.5-5e9c40?style=flat-square)
-![CUDA](https://img.shields.io/badge/CUDA-11.2-76b900?style=flat-square)
+![CUDA](https://img.shields.io/badge/CUDA-12.8-76b900?style=flat-square)
 
 This project implements the **Sieve of Eratosthenes** algorithm using three different approaches:
 - **Sequential** (C++)
