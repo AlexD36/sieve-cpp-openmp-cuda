@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include <vector>
 #include <cmath>
 #include <chrono>
@@ -12,23 +12,20 @@ using namespace std;
 void sieve_openmp(int n) {
     // Boolean vector to mark prime numbers
     vector<bool> primes(n + 1, true);
-    primes[0] = primes[1] = false; // 0 and 1 are not prime numbers
+    primes[0] = primes[1] = false;
+
+    int sqrt_n = static_cast<int>(sqrt(n));
 
     // Mark 2 as prime, as we will skip even numbers later
-    primes[2] = true;
+    if (n >= 2) primes[2] = true;
 
-    // Parallelization for marking multiples of primes
-#pragma omp parallel
-    {
-        // Parallelize the outer loop for odd numbers only (skip even numbers)
-#pragma omp for
-        for (int i = 3; i <= sqrt(n); i += 2) {  // Start from 3, check only odd numbers
-            if (primes[i]) {
-                // Parallelize the inner loop for marking multiples of the prime number
-#pragma omp for
-                for (int j = i * i; j <= n; j += 2 * i) { // Skip even multiples
-                    primes[j] = false;
-                }
+    // Parallelize the outer loop
+#pragma omp parallel for schedule(dynamic)
+    for (int i = 3; i <= sqrt_n; i += 2) {
+        if (primes[i]) {
+            // Removed inner loop paralelization
+            for (int j = i * i; j <= n; j += 2 * i) {
+                primes[j] = false;
             }
         }
     }
@@ -37,6 +34,9 @@ void sieve_openmp(int n) {
 int main() {
     // List of values for which we want to benchmark the Sieve of Eratosthenes
     vector<int> values = { 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000, 1000000000 };
+
+    //Setting the number of threads !(may differ on your machine)
+    omp_set_num_threads(16);
 
     // Open the file to save benchmark results
     ofstream results_file("results/benchmark.txt", ios::app);
