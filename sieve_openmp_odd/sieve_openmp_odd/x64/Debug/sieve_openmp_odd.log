@@ -1,2 +1,4 @@
 ﻿  sieve_openmp_odd.cpp
-  sieve_openmp_odd.vcxproj -> C:\Users\Alex\Documents\GitHub\sieve-cpp-openmp-cuda\sieve_openmp_odd\x64\Debug\sieve_openmp_odd.exe
+C:\Users\Alex\Documents\GitHub\sieve-cpp-openmp-cuda\sieve_openmp_odd\sieve_openmp_odd\sieve_openmp_odd.cpp(27,13): error C2065: 'is_prime': undeclared identifier
+C:\Users\Alex\Documents\GitHub\sieve-cpp-openmp-cuda\sieve_openmp_odd\sieve_openmp_odd\sieve_openmp_odd.cpp(31,37): error C2065: 'half': undeclared identifier
+C:\Users\Alex\Documents\GitHub\sieve-cpp-openmp-cuda\sieve_openmp_odd\sieve_openmp_odd\sieve_openmp_odd.cpp(32,17): error C2065: 'is_prime': undeclared identifier

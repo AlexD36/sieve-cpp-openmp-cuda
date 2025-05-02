@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include <vector>
 #include <cmath>
 #include <chrono>
@@ -21,17 +21,18 @@ void sieve_openmp(int n) {
 
     int sqrt_n = static_cast<int>(sqrt(n));
 
-    // Only iterate over odd numbers
-    for (int i = 3; i <= sqrt_n; i += 2) {
-        if (primes[i]) {
-            // Parallelize marking of odd multiples only
+    // Paralelizare pe bucla exterioară (mai puține task-uri, mai eficiente)
 #pragma omp parallel for schedule(dynamic)
-            for (int j = i * i; j <= n; j += 2 * i) {
-                primes[j] = false;
+    for (int i = 0; (2 * i + 3) * (2 * i + 3) <= n; ++i) {
+        if (is_prime[i]) {
+            int p = 2 * i + 3;
+            // Start de la p * p, dar în indexul corespunzător lui is_prime
+            int start = (p * p - 3) / 2;
+            for (int j = start; j < half; j += p) {
+                is_prime[j] = false;
             }
         }
     }
-
     // Optional: print primes
     /*
     for (int i = 2; i <= n; ++i)

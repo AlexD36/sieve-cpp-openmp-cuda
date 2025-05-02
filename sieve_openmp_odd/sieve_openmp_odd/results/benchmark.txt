@@ -18,4 +18,19 @@ n	Execution Time (seconds)
 ----------------------------------------------
 10000000	3.14891
 100000000	31.9331
-1000000000	335.599
+1000000000	335.599Benchmark Results for Sieve of Eratosthenes (OpenMP odd-only version)
+==============================================
+n	Execution Time (seconds)
+----------------------------------------------
+10000000	3.18041
+100000000	32.4653
+Benchmark Results for Sieve of Eratosthenes (OpenMP odd-only version)
+==============================================
+n	Execution Time (seconds)
+----------------------------------------------
+Benchmark Results for Sieve of Eratosthenes (OpenMP odd-only version)
+==============================================
+n	Execution Time (seconds)
+----------------------------------------------
+10000000	3.16784
+100000000	32.8579
