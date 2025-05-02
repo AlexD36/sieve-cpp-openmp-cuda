@@ -1,21 +1,51 @@
-Benchmark Results for Sieve of Eratosthenes (Sequential odd-only version)
-==============================================
-n	Execution Time (seconds)
-----------------------------------------------
-10000000	2.02554
-100000000	21.3553
-1000000000	229.12
-Benchmark Results for Sieve of Eratosthenes (Sequential odd-only version)
-==============================================
-n	Execution Time (seconds)
-----------------------------------------------
-10000000	2.04082
-100000000	21.3761
-1000000000	226.24
-Benchmark Results for Sieve of Eratosthenes (Sequential odd-only version)
-==============================================
-n	Execution Time (seconds)
-----------------------------------------------
-10000000	2.05512
-100000000	21.3702
-1000000000	233.77
+Benchmark Results for Sieve of Eratosthenes (OpenMP version)
+ ==============================================
+ n	Execution Time (seconds)
+ ----------------------------------------------
+ 10	1.1e-05
+ 100	2.35e-05
+ 1000	0.0003651
+ 10000	0.0024713
+ 100000	0.0271769
+ 1000000	0.310969
+ 10000000	3.37978
+ 100000000	32.6009
+ Benchmark Results for Sieve of Eratosthenes (OpenMP version)
+ ==============================================
+ n	Execution Time (seconds)
+ ----------------------------------------------
+ 10000000	3.23836
+ 100000000	32.4925
+ 1000000000	340.464
+ Benchmark Results for Sieve of Eratosthenes (OpenMP odd-only version)
+ ==============================================
+ n	Execution Time (seconds)
+ ----------------------------------------------
+ 10000000	3.29895
+ 100000000	32.3797
+ 1000000000	339.038
+ Benchmark Results for Sieve of Eratosthenes (OpenMP odd-only version)
+ ==============================================
+ n	Execution Time (seconds)
+ ----------------------------------------------
+ 10000000	3.18549
+ 100000000	32.5205
+ 1000000000	342.465
+ Benchmark Results for Sieve of Eratosthenes (OpenMP odd-only version)
+ ==============================================
+ n	Execution Time (seconds)
+ ----------------------------------------------
+ 10000000	3.14891
+ 100000000	31.9331
+ 1000000000	335.599
+ Benchmark Results for Sieve of Eratosthenes (OpenMP odd-only version)
+ ==============================================
+ n	Execution Time (seconds)
+ ----------------------------------------------
+ 10000000	3.34072
+ 100000000	32.4362
+ Benchmark Results for Sieve of Eratosthenes (OpenMP odd-only version)
+ ==============================================
+ n	Execution Time (seconds)
+ ----------------------------------------------
+ 10000000	3.14718
