@@ -29,7 +29,7 @@ CUDA Cores: 2560
 Architecture: Ampere (GA107)
 
 
-## How to run
+# How to run
 
 ### Prerequisites
 
