@@ -4,10 +4,13 @@
 ![OpenMP](https://img.shields.io/badge/OpenMP-4.5-5e9c40?style=flat-square)
 ![CUDA](https://img.shields.io/badge/CUDA-12.8-76b900?style=flat-square)
 
-This project implements the **Sieve of Eratosthenes** algorithm using three different approaches:
-- **Sequential** (C++)
-- **OpenMP** (parallelized on CPU)
-- **CUDA** (parallelized on GPU)
+The project implements the **Sieve of Eratosthenes** algorithm using six variants:
+- **Sequential**
+- **Sequential (odd-only)**
+- **OpenMP**
+- **OpenMP (odd-only)**
+- **CUDA**
+- **CUDA (odd-only)**
 
 The goal is to compare the performance of these implementations in terms of execution time and scalability across CPU and GPU architectures.
 
