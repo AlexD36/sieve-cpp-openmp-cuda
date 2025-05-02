@@ -1,0 +1,14 @@
+Benchmark Results for Sieve of Eratosthenes (CUDA version)
+==============================================
+n	Execution Time (seconds)
+----------------------------------------------
+10000000	0.18276
+100000000	0.569614
+1000000000	4.25225
+Benchmark Results for Sieve of Eratosthenes (CUDA version)
+==============================================
+n	Execution Time (seconds)
+----------------------------------------------
+10000000	0.240641
+100000000	0.480703
+1000000000	4.22488

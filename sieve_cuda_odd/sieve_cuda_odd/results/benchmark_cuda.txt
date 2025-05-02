@@ -1,0 +1,7 @@
+Benchmark Results for Sieve of Eratosthenes (CUDA version, odd numbers only)
+==============================================
+n	Execution Time (seconds)
+----------------------------------------------
+10000000	0.122529
+100000000	0.240652
+1000000000	1.95811

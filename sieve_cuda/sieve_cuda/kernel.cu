@@ -1,121 +1,91 @@
-﻿
-#include "cuda_runtime.h"
-#include "device_launch_parameters.h"
+﻿#include <iostream>
+#include <cmath>
+#include <vector>
+#include <chrono>
+#include <fstream>
 
-#include <stdio.h>
+using namespace std;
 
-cudaError_t addWithCuda(int *c, const int *a, const int *b, unsigned int size);
+// CUDA kernel to mark non-prime multiples of a given prime i
+__global__ void mark_multiples(bool* primes, int n, int i) {
+    int idx = blockIdx.x * blockDim.x + threadIdx.x;
+    int start = i * i + idx * 2 * i;
 
-__global__ void addKernel(int *c, const int *a, const int *b)
-{
-    int i = threadIdx.x;
-    c[i] = a[i] + b[i];
+    if (start <= n && start >= 0) {
+        primes[start] = false;
+    }
 }
 
-int main()
-{
-    const int arraySize = 5;
-    const int a[arraySize] = { 1, 2, 3, 4, 5 };
-    const int b[arraySize] = { 10, 20, 30, 40, 50 };
-    int c[arraySize] = { 0 };
+// Host function to run the Sieve of Eratosthenes on the GPU
+void sieve_cuda(int n) {
+    bool* host_primes = new bool[n + 1];
+    bool* device_primes;
 
-    // Add vectors in parallel.
-    cudaError_t cudaStatus = addWithCuda(c, a, b, arraySize);
-    if (cudaStatus != cudaSuccess) {
-        fprintf(stderr, "addWithCuda failed!");
-        return 1;
+    // Initialize all numbers as prime (true), except 0 and 1
+    for (int i = 0; i <= n; i++) host_primes[i] = true;
+    host_primes[0] = host_primes[1] = false;
+
+    // Allocate memory on the GPU
+    cudaMalloc(&device_primes, (n + 1) * sizeof(bool));
+    cudaMemcpy(device_primes, host_primes, (n + 1) * sizeof(bool), cudaMemcpyHostToDevice);
+
+    int sqrt_n = static_cast<int>(sqrt(n));
+
+    // Loop through all potential prime numbers up to sqrt(n)
+    for (int i = 2; i <= sqrt_n; ++i) {
+        // Only proceed if i is marked as prime
+        if (host_primes[i]) {
+            int count = ((n - i * i) / (2 * i)) + 1;
+            int blockSize = 256;
+            int numBlocks = (count + blockSize - 1) / blockSize;
+
+            // Launch the CUDA kernel to mark non-prime multiples of i
+            mark_multiples << <numBlocks, blockSize >> > (device_primes, n, i);
+            cudaDeviceSynchronize(); // Ensure the kernel completes before moving on
+        }
     }
 
-    printf("{1,2,3,4,5} + {10,20,30,40,50} = {%d,%d,%d,%d,%d}\n",
-        c[0], c[1], c[2], c[3], c[4]);
+    // Copy the result back to host
+    cudaMemcpy(host_primes, device_primes, (n + 1) * sizeof(bool), cudaMemcpyDeviceToHost);
 
-    // cudaDeviceReset must be called before exiting in order for profiling and
-    // tracing tools such as Nsight and Visual Profiler to show complete traces.
-    cudaStatus = cudaDeviceReset();
-    if (cudaStatus != cudaSuccess) {
-        fprintf(stderr, "cudaDeviceReset failed!");
-        return 1;
+    // Cleanup GPU and CPU memory
+    cudaFree(device_primes);
+    delete[] host_primes;
+}
+
+int main() {
+    // Values of n for which to benchmark the algorithm
+    vector<int> values = { 10000000 , 100000000 , 1000000000 };
+
+    // Open the file to save benchmark results
+    ofstream results_file("results/benchmark_cuda.txt", ios::app);
+
+    // Write header to the benchmark file
+    results_file << "Benchmark Results for Sieve of Eratosthenes (CUDA version)\n";
+    results_file << "==============================================\n";
+    results_file << "n\tExecution Time (seconds)\n";
+    results_file << "----------------------------------------------\n";
+
+    // Run and time the sieve for each value of n
+    for (int n : values) {
+        auto start = chrono::high_resolution_clock::now();
+
+        sieve_cuda(n);
+
+        auto end = chrono::high_resolution_clock::now();
+        chrono::duration<double> duration = end - start;
+
+        // Print execution time to console
+        cout << "n = " << n << " , Execution time: " << duration.count() << " seconds." << endl;
+
+        // Save execution time to file
+        results_file << n << "\t" << duration.count() << "\n";
     }
+
+    // Close the results file
+    results_file.close();
+
+    cout << "Benchmark results saved to 'results/benchmark_cuda.txt'" << endl;
 
     return 0;
-}
-
-// Helper function for using CUDA to add vectors in parallel.
-cudaError_t addWithCuda(int *c, const int *a, const int *b, unsigned int size)
-{
-    int *dev_a = 0;
-    int *dev_b = 0;
-    int *dev_c = 0;
-    cudaError_t cudaStatus;
-
-    // Choose which GPU to run on, change this on a multi-GPU system.
-    cudaStatus = cudaSetDevice(0);
-    if (cudaStatus != cudaSuccess) {
-        fprintf(stderr, "cudaSetDevice failed!  Do you have a CUDA-capable GPU installed?");
-        goto Error;
-    }
-
-    // Allocate GPU buffers for three vectors (two input, one output)    .
-    cudaStatus = cudaMalloc((void**)&dev_c, size * sizeof(int));
-    if (cudaStatus != cudaSuccess) {
-        fprintf(stderr, "cudaMalloc failed!");
-        goto Error;
-    }
-
-    cudaStatus = cudaMalloc((void**)&dev_a, size * sizeof(int));
-    if (cudaStatus != cudaSuccess) {
-        fprintf(stderr, "cudaMalloc failed!");
-        goto Error;
-    }
-
-    cudaStatus = cudaMalloc((void**)&dev_b, size * sizeof(int));
-    if (cudaStatus != cudaSuccess) {
-        fprintf(stderr, "cudaMalloc failed!");
-        goto Error;
-    }
-
-    // Copy input vectors from host memory to GPU buffers.
-    cudaStatus = cudaMemcpy(dev_a, a, size * sizeof(int), cudaMemcpyHostToDevice);
-    if (cudaStatus != cudaSuccess) {
-        fprintf(stderr, "cudaMemcpy failed!");
-        goto Error;
-    }
-
-    cudaStatus = cudaMemcpy(dev_b, b, size * sizeof(int), cudaMemcpyHostToDevice);
-    if (cudaStatus != cudaSuccess) {
-        fprintf(stderr, "cudaMemcpy failed!");
-        goto Error;
-    }
-
-    // Launch a kernel on the GPU with one thread for each element.
-    addKernel<<<1, size>>>(dev_c, dev_a, dev_b);
-
-    // Check for any errors launching the kernel
-    cudaStatus = cudaGetLastError();
-    if (cudaStatus != cudaSuccess) {
-        fprintf(stderr, "addKernel launch failed: %s\n", cudaGetErrorString(cudaStatus));
-        goto Error;
-    }
-    
-    // cudaDeviceSynchronize waits for the kernel to finish, and returns
-    // any errors encountered during the launch.
-    cudaStatus = cudaDeviceSynchronize();
-    if (cudaStatus != cudaSuccess) {
-        fprintf(stderr, "cudaDeviceSynchronize returned error code %d after launching addKernel!\n", cudaStatus);
-        goto Error;
-    }
-
-    // Copy output vector from GPU buffer to host memory.
-    cudaStatus = cudaMemcpy(c, dev_c, size * sizeof(int), cudaMemcpyDeviceToHost);
-    if (cudaStatus != cudaSuccess) {
-        fprintf(stderr, "cudaMemcpy failed!");
-        goto Error;
-    }
-
-Error:
-    cudaFree(dev_c);
-    cudaFree(dev_a);
-    cudaFree(dev_b);
-    
-    return cudaStatus;
 }
