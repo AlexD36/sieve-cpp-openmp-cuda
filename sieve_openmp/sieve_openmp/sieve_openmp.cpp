@@ -29,7 +29,7 @@ void sieve_openmp(int n) {
 
 int main() {
     // List of values for which we want to benchmark the Sieve of Eratosthenes
-    vector<int> values = { 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000, 1000000000 };
+    vector<int> values = { 10000000, 100000000, 1000000000 };
 
     //Setting the number of threads !(may differ on your machine)
     omp_set_num_threads(16);

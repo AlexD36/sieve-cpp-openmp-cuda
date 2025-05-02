@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Alex\\Documents\\GitHub\\sieve-cpp-openmp-cuda\\test_archive\\sieve_cuda2\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{98F92C7F-FB82-467B-8884-4FA688AB67DC}|sieve_cuda2\\sieve_cuda2.vcxproj|C:\\Users\\Alex\\Documents\\GitHub\\sieve-cpp-openmp-cuda\\test_archive\\sieve_cuda2\\sieve_cuda2\\kernel.cu||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{98F92C7F-FB82-467B-8884-4FA688AB67DC}|sieve_cuda2\\sieve_cuda2.vcxproj|solutionrelative:sieve_cuda2\\kernel.cu||{8B382828-6202-11D1-8870-0000F87579D2}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "kernel.cu",
+              "DocumentMoniker": "C:\\Users\\Alex\\Documents\\GitHub\\sieve-cpp-openmp-cuda\\test_archive\\sieve_cuda2\\sieve_cuda2\\kernel.cu",
+              "RelativeDocumentMoniker": "sieve_cuda2\\kernel.cu",
+              "ToolTip": "C:\\Users\\Alex\\Documents\\GitHub\\sieve-cpp-openmp-cuda\\test_archive\\sieve_cuda2\\sieve_cuda2\\kernel.cu",
+              "RelativeToolTip": "sieve_cuda2\\kernel.cu",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-05-02T17:41:50.066Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

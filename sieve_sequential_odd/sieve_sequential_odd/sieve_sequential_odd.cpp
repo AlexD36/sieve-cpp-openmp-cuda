@@ -45,14 +45,14 @@ void sieve_sequential(int n) {
 
 int main() {
     // List of values for which we want to benchmark the Sieve of Eratosthenes
-    vector<int> values = { 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000, 1000000000 };
+    vector<int> values = { 10000000, 100000000, 1000000000 };
 
 
     // Open the file to save benchmark results (append mode)
     ofstream results_file("results/benchmark.txt", ios::app);
 
     // Write header for the benchmark results file
-    results_file << "Benchmark Results for Sieve of Eratosthenes (Sequential version)\n";
+    results_file << "Benchmark Results for Sieve of Eratosthenes (Sequential odd-only version)\n";
     results_file << "==============================================\n";
     results_file << "n\tExecution Time (seconds)\n";
     results_file << "----------------------------------------------\n";
