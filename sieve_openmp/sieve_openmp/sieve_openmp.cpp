@@ -12,18 +12,14 @@ using namespace std;
 void sieve_openmp(int n) {
     // Boolean vector to mark prime numbers
     vector<bool> primes(n + 1, true);
-    primes[0] = primes[1] = false;
+    primes[0] = primes[1] = false; // 0 and 1 are not prime numbers
 
     int sqrt_n = static_cast<int>(sqrt(n));
 
-    // Mark 2 as prime, as we will skip even numbers later
-    if (n >= 2) primes[2] = true;
-
-    // Parallelize the outer loop
-#pragma omp parallel for schedule(dynamic)
-    for (int i = 3; i <= sqrt_n; i += 2) {
+    for (int i = 2; i <= sqrt_n; i ++) {
         if (primes[i]) {
-            // Removed inner loop paralelization
+            // Parallelize the inner loop that marks multiples
+#pragma omp parallel for schedule(dynamic)
             for (int j = i * i; j <= n; j += 2 * i) {
                 primes[j] = false;
             }
