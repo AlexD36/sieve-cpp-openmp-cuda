@@ -14,7 +14,7 @@ The goal is to compare the performance of these implementations in terms of exec
 
 # Results
 
-![pp](https://github.com/user-attachments/assets/43ec40f7-c70e-41b4-aaf5-14b13714ef46)
+![pp2](https://github.com/user-attachments/assets/4da78c3f-b8c1-4faa-a6b4-76e385040c3f)
 
 Tested on : AMD Ryzen 7 5800H @ 3.20 GHz
 Cores / Threads: 8 Cores, 16 Threads
