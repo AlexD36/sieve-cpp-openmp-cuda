@@ -16,8 +16,17 @@ The goal is to compare the performance of these implementations in terms of exec
 
 ![pp2](https://github.com/user-attachments/assets/4da78c3f-b8c1-4faa-a6b4-76e385040c3f)
 
-Tested on : AMD Ryzen 7 5800H @ 3.20 GHz
+Tested on : 
+
+AMD Ryzen 7 5800H @ 3.20 GHz
+
 Cores / Threads: 8 Cores, 16 Threads
+
+GPU: NVIDIA GeForce RTX 3050 Ti Laptop GPU (4GB GDDR6)
+
+CUDA Cores: 2560
+
+Architecture: Ampere (GA107)
 
 ## How to run
 
