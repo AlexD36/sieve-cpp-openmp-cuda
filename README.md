@@ -1,4 +1,4 @@
-# Sieve of Eratosthenes: Sequential vs OpenMP vs CUDA
+![ChatGPT Image May 3, 2025, 04_42_37 AM](https://github.com/user-attachments/assets/74148b94-3e4e-4b98-9e93-2315ab3bc0ed)# Sieve of Eratosthenes: Sequential vs OpenMP vs CUDA
 
 ![C++](https://img.shields.io/badge/C%2B%2B-17-blue?style=flat-square)
 ![OpenMP](https://img.shields.io/badge/OpenMP-4.5-5e9c40?style=flat-square)
@@ -17,7 +17,7 @@ The goal is to compare the performance of these implementations in terms of exec
 
 # Results
 
- ![Uploading ChatGPT Image May 3, 2025, 04_42_37 AM.png…]()
+  ![ChatGPT Image May 3, 2025, 04_42_37 AM](https://github.com/user-attachments/assets/0f057565-338b-437e-8862-b44af087e508)
 
 # Tested on : 
 
