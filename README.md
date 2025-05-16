@@ -63,3 +63,10 @@ Run the program for a given number `n` to find all prime numbers up to `n`. For 
 
 
 This project also includes performance benchmarks to compare the execution times of each implementation. You can find the results in the `results/benchmark.txt` directory or in `benchmark_final.txt`.
+
+---
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+
