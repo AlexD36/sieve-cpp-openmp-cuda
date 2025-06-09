@@ -31,10 +31,6 @@ The goal is to compare the performance of these implementations in terms of exec
 - CUDA Cores: 2560
 - Architecture: Ampere (GA107)
 
-Of course! Here's the revised version with **clearer structure**, using **subtitles** to improve readability—ideal for a professional `README.md` or report section.
-
----
-
 ## Parallelization
 
 ### Why Parallelize?
