@@ -62,7 +62,7 @@ The **odd-only optimization** eliminates all even numbers from the sieve (except
 
 This **reduces memory usage by nearly 50%** and also cuts the number of inner-loop iterations in half. It’s particularly effective for **high values of `n`**, significantly speeding up runtime and reducing cache misses.
 
-### 🔧 2. Replacing `vector<bool>` with `vector<char>`
+### 2. Replacing `vector<bool>` with `vector<char>`
 
 While `vector<bool>` might seem like an efficient choice, in C++ it's a **bit-packed structure**, not a true container of `bool`s. Each element isn't a separate byte—it’s a **bit**, and accessing it requires proxy logic (bit masking, shifting, etc.).
 
