@@ -19,3 +19,20 @@ n	Execution Time (seconds)
 10000000	5.24421
 100000000	54.9795
 1000000000	585.742
+Benchmark Results for Sieve of Eratosthenes (Sequential version)
+==============================================
+n	Execution Time (seconds)
+----------------------------------------------
+10000000	0.175063
+100000000	2.27643
+1000000000	22.4268
+Benchmark Results for Sieve of Eratosthenes (Sequential version)
+==============================================
+n	Execution Time (seconds)
+----------------------------------------------
+10000000	0.140706
+Benchmark Results for Sieve of Eratosthenes (Sequential version)
+==============================================
+n	Execution Time (seconds)
+----------------------------------------------
+10000000	0.135238

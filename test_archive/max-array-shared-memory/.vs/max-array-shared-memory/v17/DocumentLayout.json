@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Alex\\Documents\\GitHub\\sieve-cpp-openmp-cuda\\test_archive\\max-array-shared-memory\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{05FA17CB-28D6-4E44-B416-2BDEF12BBC9C}|max-array-shared-memory\\max-array-shared-memory.vcxproj|C:\\Users\\Alex\\Documents\\GitHub\\sieve-cpp-openmp-cuda\\test_archive\\max-array-shared-memory\\max-array-shared-memory\\kernel.cu||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{05FA17CB-28D6-4E44-B416-2BDEF12BBC9C}|max-array-shared-memory\\max-array-shared-memory.vcxproj|solutionrelative:max-array-shared-memory\\kernel.cu||{8B382828-6202-11D1-8870-0000F87579D2}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "kernel.cu",
+              "DocumentMoniker": "C:\\Users\\Alex\\Documents\\GitHub\\sieve-cpp-openmp-cuda\\test_archive\\max-array-shared-memory\\max-array-shared-memory\\kernel.cu",
+              "RelativeDocumentMoniker": "max-array-shared-memory\\kernel.cu",
+              "ToolTip": "C:\\Users\\Alex\\Documents\\GitHub\\sieve-cpp-openmp-cuda\\test_archive\\max-array-shared-memory\\max-array-shared-memory\\kernel.cu",
+              "RelativeToolTip": "max-array-shared-memory\\kernel.cu",
+              "ViewState": "AgIAADAAAAAAAAAAAADwv0AAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-05-16T13:20:52.068Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

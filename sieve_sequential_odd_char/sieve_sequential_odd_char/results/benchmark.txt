@@ -1,0 +1,7 @@
+Benchmark Results for Sieve of Eratosthenes (Sequential odd-only version with char)
+==============================================
+n	Execution Time (seconds)
+----------------------------------------------
+10000000	0.151362
+100000000	2.69517
+1000000000	19.8787

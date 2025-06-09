@@ -1,0 +1,149 @@
+﻿  Compiling CUDA source file kernel.cu...
+  
+  C:\Users\Alex\Documents\GitHub\sieve-cpp-openmp-cuda\test_archive\max-array-shared-memory\max-array-shared-memory>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.8\bin\nvcc.exe" -gencode=arch=compute_52,code=\"sm_52,compute_52\" --use-local-env -ccbin "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\bin\HostX64\x64" -x cu   -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.8\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.8\include"  -G   --keep-dir x64\Debug  -maxrregcount=0    --machine 64 --compile -cudart static  -g  -DWIN32 -DWIN64 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /FS /Zi /RTC1 /MDd " -Xcompiler "/Fdx64\Debug\vc143.pdb" -o C:\Users\Alex\Documents\GitHub\sieve-cpp-openmp-cuda\test_archive\max-array-shared-memory\max-array-shared-memory\x64\Debug\kernel.cu.obj "C:\Users\Alex\Documents\GitHub\sieve-cpp-openmp-cuda\test_archive\max-array-shared-memory\max-array-shared-memory\kernel.cu" 
+C:\Users\Alex\Documents\GitHub\sieve-cpp-openmp-cuda\test_archive\max-array-shared-memory\max-array-shared-memory\kernel.cu(9): error : this declaration has no storage class or type specifier
+    _global_ void findMax(int* input, int* block_max, int N) {
+    ^
+  
+C:\Users\Alex\Documents\GitHub\sieve-cpp-openmp-cuda\test_archive\max-array-shared-memory\max-array-shared-memory\kernel.cu(9): error : expected a ";"
+    _global_ void findMax(int* input, int* block_max, int N) {
+             ^
+  
+C:\Users\Alex\Documents\GitHub\sieve-cpp-openmp-cuda\test_archive\max-array-shared-memory\max-array-shared-memory\kernel.cu(58): warning #12-D: parsing restarts here after previous syntax error
+        cudaMalloc((void**)&partial_max, num_blocks * sizeof(int));
+                                                                  ^
+  
+  Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+  
+C:\Users\Alex\Documents\GitHub\sieve-cpp-openmp-cuda\test_archive\max-array-shared-memory\max-array-shared-memory\kernel.cu(59): error : this declaration has no storage class or type specifier
+        cudaMalloc((void**)&result_device, sizeof(int));
+        ^
+  
+C:\Users\Alex\Documents\GitHub\sieve-cpp-openmp-cuda\test_archive\max-array-shared-memory\max-array-shared-memory\kernel.cu(59): error : declaration is incompatible with overloaded function "cudaMalloc" (declared at line 868 of C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.8\include\cuda_device_runtime_api.h)
+        cudaMalloc((void**)&result_device, sizeof(int));
+        ^
+  
+C:\Users\Alex\Documents\GitHub\sieve-cpp-openmp-cuda\test_archive\max-array-shared-memory\max-array-shared-memory\kernel.cu(59): error : identifier "result_device" is undefined
+        cudaMalloc((void**)&result_device, sizeof(int));
+                            ^
+  
+C:\Users\Alex\Documents\GitHub\sieve-cpp-openmp-cuda\test_archive\max-array-shared-memory\max-array-shared-memory\kernel.cu(59): error : too many initializer values
+        cudaMalloc((void**)&result_device, sizeof(int));
+                                           ^
+  
+C:\Users\Alex\Documents\GitHub\sieve-cpp-openmp-cuda\test_archive\max-array-shared-memory\max-array-shared-memory\kernel.cu(61): error : this declaration has no storage class or type specifier
+        cudaMemcpy(array_device, array_host, N * sizeof(int), cudaMemcpyHostToDevice);
+        ^
+  
+C:\Users\Alex\Documents\GitHub\sieve-cpp-openmp-cuda\test_archive\max-array-shared-memory\max-array-shared-memory\kernel.cu(61): error : declaration is incompatible with "cudaError_t __stdcall cudaMemcpy(void *, const void *, size_t, cudaMemcpyKind)" (declared at line 6852 of C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.8\include\cuda_runtime_api.h)
+        cudaMemcpy(array_device, array_host, N * sizeof(int), cudaMemcpyHostToDevice);
+        ^
+  
+C:\Users\Alex\Documents\GitHub\sieve-cpp-openmp-cuda\test_archive\max-array-shared-memory\max-array-shared-memory\kernel.cu(61): error : identifier "array_device" is undefined
+        cudaMemcpy(array_device, array_host, N * sizeof(int), cudaMemcpyHostToDevice);
+                   ^
+  
+C:\Users\Alex\Documents\GitHub\sieve-cpp-openmp-cuda\test_archive\max-array-shared-memory\max-array-shared-memory\kernel.cu(61): error : identifier "array_host" is undefined
+        cudaMemcpy(array_device, array_host, N * sizeof(int), cudaMemcpyHostToDevice);
+                                 ^
+  
+C:\Users\Alex\Documents\GitHub\sieve-cpp-openmp-cuda\test_archive\max-array-shared-memory\max-array-shared-memory\kernel.cu(61): error : identifier "N" is undefined
+        cudaMemcpy(array_device, array_host, N * sizeof(int), cudaMemcpyHostToDevice);
+                                             ^
+  
+C:\Users\Alex\Documents\GitHub\sieve-cpp-openmp-cuda\test_archive\max-array-shared-memory\max-array-shared-memory\kernel.cu(61): error : too many initializer values
+        cudaMemcpy(array_device, array_host, N * sizeof(int), cudaMemcpyHostToDevice);
+                                 ^
+  
+C:\Users\Alex\Documents\GitHub\sieve-cpp-openmp-cuda\test_archive\max-array-shared-memory\max-array-shared-memory\kernel.cu(64): error : identifier "num_blocks" is undefined
+        dim3 grid_size(num_blocks);
+                       ^
+  
+C:\Users\Alex\Documents\GitHub\sieve-cpp-openmp-cuda\test_archive\max-array-shared-memory\max-array-shared-memory\kernel.cu(67): error : this declaration has no storage class or type specifier
+        findMax << <grid_size, block_size >> > (array_device, partial_max, N);
+        ^
+  
+C:\Users\Alex\Documents\GitHub\sieve-cpp-openmp-cuda\test_archive\max-array-shared-memory\max-array-shared-memory\kernel.cu(67): error : expected a ";"
+        findMax << <grid_size, block_size >> > (array_device, partial_max, N);
+                ^
+  
+C:\Users\Alex\Documents\GitHub\sieve-cpp-openmp-cuda\test_archive\max-array-shared-memory\max-array-shared-memory\kernel.cu(70): error : this declaration has no storage class or type specifier
+        findMax << <1, 128 >> > (partial_max, result_device, num_blocks);
+        ^
+  
+C:\Users\Alex\Documents\GitHub\sieve-cpp-openmp-cuda\test_archive\max-array-shared-memory\max-array-shared-memory\kernel.cu(70): error : variable "findMax" has already been defined (previous definition at line 67)
+        findMax << <1, 128 >> > (partial_max, result_device, num_blocks);
+        ^
+  
+C:\Users\Alex\Documents\GitHub\sieve-cpp-openmp-cuda\test_archive\max-array-shared-memory\max-array-shared-memory\kernel.cu(70): error : expected a ";"
+        findMax << <1, 128 >> > (partial_max, result_device, num_blocks);
+                ^
+  
+C:\Users\Alex\Documents\GitHub\sieve-cpp-openmp-cuda\test_archive\max-array-shared-memory\max-array-shared-memory\kernel.cu(72): error : this declaration has no storage class or type specifier
+        cudaMemcpy(&result_host, result_device, sizeof(int), cudaMemcpyDeviceToHost);
+        ^
+  
+C:\Users\Alex\Documents\GitHub\sieve-cpp-openmp-cuda\test_archive\max-array-shared-memory\max-array-shared-memory\kernel.cu(72): error : variable "cudaMemcpy" has already been defined (previous definition at line 61)
+        cudaMemcpy(&result_host, result_device, sizeof(int), cudaMemcpyDeviceToHost);
+        ^
+  
+C:\Users\Alex\Documents\GitHub\sieve-cpp-openmp-cuda\test_archive\max-array-shared-memory\max-array-shared-memory\kernel.cu(72): error : identifier "result_host" is undefined
+        cudaMemcpy(&result_host, result_device, sizeof(int), cudaMemcpyDeviceToHost);
+                    ^
+  
+C:\Users\Alex\Documents\GitHub\sieve-cpp-openmp-cuda\test_archive\max-array-shared-memory\max-array-shared-memory\kernel.cu(72): error : too many initializer values
+        cudaMemcpy(&result_host, result_device, sizeof(int), cudaMemcpyDeviceToHost);
+                                 ^
+  
+C:\Users\Alex\Documents\GitHub\sieve-cpp-openmp-cuda\test_archive\max-array-shared-memory\max-array-shared-memory\kernel.cu(74): error : this declaration has no storage class or type specifier
+        cout << "Maximul este: " << result_host << endl;
+        ^
+  
+C:\Users\Alex\Documents\GitHub\sieve-cpp-openmp-cuda\test_archive\max-array-shared-memory\max-array-shared-memory\kernel.cu(74): error : expected a ";"
+        cout << "Maximul este: " << result_host << endl;
+             ^
+  
+C:\Users\Alex\Documents\GitHub\sieve-cpp-openmp-cuda\test_archive\max-array-shared-memory\max-array-shared-memory\kernel.cu(76): error : this declaration has no storage class or type specifier
+        cudaFree(array_device);
+        ^
+  
+C:\Users\Alex\Documents\GitHub\sieve-cpp-openmp-cuda\test_archive\max-array-shared-memory\max-array-shared-memory\kernel.cu(76): error : declaration is incompatible with "cudaError_t __stdcall cudaFree(void *)" (declared at line 5647 of C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.8\include\cuda_runtime_api.h)
+        cudaFree(array_device);
+        ^
+  
+C:\Users\Alex\Documents\GitHub\sieve-cpp-openmp-cuda\test_archive\max-array-shared-memory\max-array-shared-memory\kernel.cu(77): error : this declaration has no storage class or type specifier
+        cudaFree(partial_max);
+        ^
+  
+C:\Users\Alex\Documents\GitHub\sieve-cpp-openmp-cuda\test_archive\max-array-shared-memory\max-array-shared-memory\kernel.cu(77): error : variable "cudaFree" has already been defined (previous definition at line 76)
+        cudaFree(partial_max);
+        ^
+  
+C:\Users\Alex\Documents\GitHub\sieve-cpp-openmp-cuda\test_archive\max-array-shared-memory\max-array-shared-memory\kernel.cu(77): error : identifier "partial_max" is undefined
+        cudaFree(partial_max);
+                 ^
+  
+C:\Users\Alex\Documents\GitHub\sieve-cpp-openmp-cuda\test_archive\max-array-shared-memory\max-array-shared-memory\kernel.cu(78): error : this declaration has no storage class or type specifier
+        cudaFree(result_device);
+        ^
+  
+C:\Users\Alex\Documents\GitHub\sieve-cpp-openmp-cuda\test_archive\max-array-shared-memory\max-array-shared-memory\kernel.cu(78): error : variable "cudaFree" has already been defined (previous definition at line 76)
+        cudaFree(result_device);
+        ^
+  
+C:\Users\Alex\Documents\GitHub\sieve-cpp-openmp-cuda\test_archive\max-array-shared-memory\max-array-shared-memory\kernel.cu(79): error : expected a declaration
+        delete[] array_host;
+        ^
+  
+C:\Users\Alex\Documents\GitHub\sieve-cpp-openmp-cuda\test_archive\max-array-shared-memory\max-array-shared-memory\kernel.cu(81): error : expected a declaration
+        return 0;
+        ^
+  
+C:\Users\Alex\Documents\GitHub\sieve-cpp-openmp-cuda\test_archive\max-array-shared-memory\max-array-shared-memory\kernel.cu(82): error : expected a declaration
+    }
+    ^
+  
+  34 errors detected in the compilation of "C:/Users/Alex/Documents/GitHub/sieve-cpp-openmp-cuda/test_archive/max-array-shared-memory/max-array-shared-memory/kernel.cu".
+CUDACOMPILE : nvcc warning : Support for offline compilation for architectures prior to '<compute/sm/lto>_75' will be removed in a future release (Use -Wno-deprecated-gpu-targets to suppress warning).
+  kernel.cu
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\BuildCustomizations\CUDA 12.8.targets(800,9): error MSB3721: The command ""C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.8\bin\nvcc.exe" -gencode=arch=compute_52,code=\"sm_52,compute_52\" --use-local-env -ccbin "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\bin\HostX64\x64" -x cu   -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.8\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.8\include"  -G   --keep-dir x64\Debug  -maxrregcount=0    --machine 64 --compile -cudart static  -g  -DWIN32 -DWIN64 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /FS /Zi /RTC1 /MDd " -Xcompiler "/Fdx64\Debug\vc143.pdb" -o C:\Users\Alex\Documents\GitHub\sieve-cpp-openmp-cuda\test_archive\max-array-shared-memory\max-array-shared-memory\x64\Debug\kernel.cu.obj "C:\Users\Alex\Documents\GitHub\sieve-cpp-openmp-cuda\test_archive\max-array-shared-memory\max-array-shared-memory\kernel.cu"" exited with code 2.

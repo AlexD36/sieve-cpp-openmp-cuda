@@ -11,8 +11,8 @@ using namespace std;
 // Function to find prime numbers up to n using the Sieve of Eratosthenes (sequential)
 void sieve_sequential(int n) {
     // Boolean vector to mark prime numbers
-    vector<bool> primes(n + 1, true);
-    primes[0] = primes[1] = false; // 0 and 1 are not prime numbers
+    vector<char> primes(n + 1, 1);
+    primes[0] = primes[1] = 0; // 0 and 1 are not prime numbers
 
     // Sieve of Eratosthenes algorithm
     for (int i = 2; i <= sqrt(n); i++) {

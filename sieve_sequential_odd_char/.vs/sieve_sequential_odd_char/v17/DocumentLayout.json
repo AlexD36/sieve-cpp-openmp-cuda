@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Alex\\Documents\\GitHub\\sieve-cpp-openmp-cuda\\sieve_sequential_odd_char\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{0433CC67-0313-46AD-8BDE-87A46785D017}|sieve_sequential_odd_char\\sieve_sequential_odd_char.vcxproj|C:\\Users\\Alex\\Documents\\GitHub\\sieve-cpp-openmp-cuda\\sieve_sequential_odd_char\\sieve_sequential_odd_char\\sieve_sequential_odd_char.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{0433CC67-0313-46AD-8BDE-87A46785D017}|sieve_sequential_odd_char\\sieve_sequential_odd_char.vcxproj|solutionrelative:sieve_sequential_odd_char\\sieve_sequential_odd_char.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "sieve_sequential_odd_char.cpp",
+              "DocumentMoniker": "C:\\Users\\Alex\\Documents\\GitHub\\sieve-cpp-openmp-cuda\\sieve_sequential_odd_char\\sieve_sequential_odd_char\\sieve_sequential_odd_char.cpp",
+              "RelativeDocumentMoniker": "sieve_sequential_odd_char\\sieve_sequential_odd_char.cpp",
+              "ToolTip": "C:\\Users\\Alex\\Documents\\GitHub\\sieve-cpp-openmp-cuda\\sieve_sequential_odd_char\\sieve_sequential_odd_char\\sieve_sequential_odd_char.cpp",
+              "RelativeToolTip": "sieve_sequential_odd_char\\sieve_sequential_odd_char.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD8AAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-06-09T20:18:04.137Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

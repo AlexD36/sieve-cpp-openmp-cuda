@@ -16,7 +16,7 @@ void sieve_openmp(int n) {
 
     int sqrt_n = static_cast<int>(sqrt(n));
 
-    for (int i = 2; i <= sqrt_n; i ++) {
+    for (int i = 2; i <= sqrt_n; i++) {
         if (primes[i]) {
             // Parallelize the inner loop that marks multiples
 #pragma omp parallel for schedule(dynamic)

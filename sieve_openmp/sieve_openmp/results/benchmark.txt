@@ -19,3 +19,48 @@ n	Execution Time (seconds)
 10000000	4.2351
 100000000	46.768
 1000000000	527.58
+Benchmark Results for Sieve of Eratosthenes (OpenMP version)
+==============================================
+n	Execution Time (seconds)
+----------------------------------------------
+10000000	0.141488
+100000000	2.80858
+1000000000	28.1296
+Benchmark Results for Sieve of Eratosthenes (OpenMP version)
+==============================================
+n	Execution Time (seconds)
+----------------------------------------------
+10000000	0.123518
+100000000	2.55975
+1000000000	26.8781
+Benchmark Results for Sieve of Eratosthenes (OpenMP version)
+==============================================
+n	Execution Time (seconds)
+----------------------------------------------
+10000000	0.156519
+100000000	2.9012
+Benchmark Results for Sieve of Eratosthenes (OpenMP version)
+==============================================
+n	Execution Time (seconds)
+----------------------------------------------
+10000000	5.25597
+100000000	51.679
+1000000000	574.227
+Benchmark Results for Sieve of Eratosthenes (OpenMP version)
+==============================================
+n	Execution Time (seconds)
+----------------------------------------------
+10000000	4.84369
+Benchmark Results for Sieve of Eratosthenes (OpenMP version)
+==============================================
+n	Execution Time (seconds)
+----------------------------------------------
+10000000	0.233676
+100000000	3.03622
+Benchmark Results for Sieve of Eratosthenes (OpenMP version)
+==============================================
+n	Execution Time (seconds)
+----------------------------------------------
+10000000	0.269699
+100000000	3.75204
+1000000000	37.9034
