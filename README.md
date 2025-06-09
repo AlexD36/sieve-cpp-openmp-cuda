@@ -1,4 +1,3 @@
-# Sieve of Eratosthenes: Sequential vs OpenMP vs CUDA
 
 ![C++](https://img.shields.io/badge/C%2B%2B-17-blue?style=flat-square)
 ![OpenMP](https://img.shields.io/badge/OpenMP-4.5-5e9c40?style=flat-square)
@@ -17,7 +16,7 @@ The goal is to compare the performance of these implementations in terms of exec
 
 # Results
 
-![pp5](https://github.com/user-attachments/assets/911bedf5-9d76-4fa4-bb0d-5358d3c54e9e)
+ ![ChatGPT Image May 3, 2025, 04_46_09 AM](https://github.com/user-attachments/assets/5a7b725e-6de8-47cf-b180-a458b924e7d0)
 
 # Tested on : 
 
@@ -64,3 +63,10 @@ Run the program for a given number `n` to find all prime numbers up to `n`. For 
 
 
 This project also includes performance benchmarks to compare the execution times of each implementation. You can find the results in the `results/benchmark.txt` directory or in `benchmark_final.txt`.
+
+---
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+
