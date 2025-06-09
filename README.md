@@ -19,7 +19,7 @@ The goal is to compare the performance of these implementations in terms of exec
 
 # Results
 
-![412](https://github.com/user-attachments/assets/faf48922-8654-4b03-8ccc-2f39d872e373)
+ ![412](https://github.com/user-attachments/assets/7c8bc51f-ffb8-49da-bc9c-5e5ef638a964)
 ![3124125](https://github.com/user-attachments/assets/ee5daf87-cfa7-41dd-984e-56cd1ff8bca2)
 ![214212224](https://github.com/user-attachments/assets/624442a9-c9fb-400e-8f9f-49e447433436)
 
