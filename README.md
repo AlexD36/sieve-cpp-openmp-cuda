@@ -31,6 +31,58 @@ The goal is to compare the performance of these implementations in terms of exec
 - CUDA Cores: 2560
 - Architecture: Ampere (GA107)
 
+Of course! Here's the revised version with **clearer structure**, using **subtitles** to improve readability—ideal for a professional `README.md` or report section.
+
+---
+
+## Parallelization
+
+### Why Parallelize?
+
+The Sieve of Eratosthenes is inherently a good candidate for parallelization because the task of marking multiples of prime numbers can be distributed across multiple threads or CUDA cores. However, care must be taken in choosing **what part** of the algorithm to parallelize.
+
+### Why the Inner Loop, Not the Outer?
+
+In this implementation, only the **inner loop** was parallelized. The **outer loop** iterates over potential prime numbers `i`, and its correctness depends on whether `primes[i]` is still marked as true. If multiple threads were allowed to execute the outer loop in parallel, they might **read or write `primes[i]` simultaneously**, causing **race conditions** and invalidating the sieve.
+
+Instead, by keeping the outer loop sequential and parallelizing the **inner loop that marks the multiples of `i`**, we ensure thread-safe behavior. Once `i` is known to be prime, each multiple of `i` (`i*i`, `i*i+2i`, `i*i+4i`, ...) can be marked independently. This results in **safe, data-parallel execution**.
+
+###  How It Scales
+
+* **OpenMP:** Each thread handles a chunk of the inner loop range with no overlap.
+* **CUDA:** Each thread in a CUDA block marks one or more multiples, avoiding conflicts via index arithmetic.
+* This approach scales well and is **efficient, correct, and portable** across CPUs and GPUs.
+
+---
+
+## Optimization
+
+### 1. Odd-Only Sieve
+
+The **odd-only optimization** eliminates all even numbers from the sieve (except `2`). Since all even numbers greater than `2` are known to be composite, there's no need to store or process them. Instead of maintaining an array for all integers, the sieve tracks only odd values:
+
+* Original index: `i → i`
+* Optimized index: `i → 2*i + 3`
+
+This **reduces memory usage by nearly 50%** and also cuts the number of inner-loop iterations in half. It’s particularly effective for **high values of `n`**, significantly speeding up runtime and reducing cache misses.
+
+### 🔧 2. Replacing `vector<bool>` with `vector<char>`
+
+While `vector<bool>` might seem like an efficient choice, in C++ it's a **bit-packed structure**, not a true container of `bool`s. Each element isn't a separate byte—it’s a **bit**, and accessing it requires proxy logic (bit masking, shifting, etc.).
+
+In **parallel environments**, this causes:
+
+* Overhead per access
+* Potential thread contention (especially in CUDA/global memory)
+* Poor cache behavior due to false sharing (multiple bits in one byte)
+
+Replacing `vector<bool>` with `vector<char>` or `uint8_t` solves all of these:
+
+* Each element is **one byte**, accessible directly
+* No proxies, no masking
+* Greatly improved **thread safety** and **data locality**
+* Slightly higher memory use, but drastically better **performance** and **scalability**
+
 
 # How to run
 
